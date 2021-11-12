@@ -1,0 +1,59 @@
+
+<ion-card-title *ngIf="!addMusic" class='ion-text-center'>
+  {{musicname}} played by {{musicband}}
+</ion-card-title>
+
+<ion-content *ngIf="!addMusic">
+
+
+  <youtube-player
+    [videoId]="musicurl"
+    [playerVars]="{controls: 1, autoplay: 1}"
+    suggestedQuality="highres"
+    [height]="600"
+    [width]="600">
+  </youtube-player>
+
+</ion-content>
+<div class='center'>
+<ion-button (click)='closePop()'  *ngIf="!addMusic" class='ion-button-center'> Close Music </ion-button>
+</div>
+
+<ion-content *ngIf="addMusic">
+  <ion-list-header>
+    Add a new Song by inserting Informations in the Input Fields
+  </ion-list-header>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Music Name</ion-label>
+      <ion-input placeholder='Insert Music Name' [(ngModel)]="this.musicname" required="true">
+
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Band Name</ion-label>
+      <ion-input placeholder='Insert Band Name' [(ngModel)]="this.musicband" required="true">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Youtube-URL</ion-label>
+      <ion-input placeholder='Insert URL for Song' [(ngModel)]="this.musicurl" required=true>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Music Genre</ion-label>
+      <ion-input placeholder='Insert Genre' [(ngModel)]="this.musicgenre">
+
+      </ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+
+<ion-button *ngIf="addMusic" (click)='insertMusic(musicname,musicband,musicurl,musicgenre)'> Add</ion-button>
+<ion-button (click)='closePop()'  *ngIf="addMusic" > Close </ion-button>
+
+
+
+
+

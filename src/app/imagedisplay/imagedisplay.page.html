@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>imagedisplay</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let image of images">
+      <ion-avatar slot="start">
+        <ion-img [src]="image.imageURL"></ion-img>
+      </ion-avatar>
+      <ion-label> {{image.title}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+
+
+
+</ion-content>

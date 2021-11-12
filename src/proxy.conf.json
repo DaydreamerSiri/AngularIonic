@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "localhost:5001/WeatherForecast",
+    "secure": false
+  },
+  "logLevel": "debug"
+}

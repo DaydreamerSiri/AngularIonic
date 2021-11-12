@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Root Tree</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <tree-root #tree (updateData)="onUpdate(tree)" (moveNode)="onMoveNode(tree)" [nodes]="nodelist"  [options]="treeoptions" ></tree-root>
+  </ion-list>
+</ion-content>
