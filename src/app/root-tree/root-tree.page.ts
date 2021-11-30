@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TreeService } from './tree.service';
+import {NestedTreeControl } from '@angular/cdk/tree';
+import { IRootNode} from './node';
+import {ArrayDataSource} from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-root-tree',
@@ -7,55 +10,18 @@ import { TreeService } from './tree.service';
   styleUrls: ['./root-tree.page.scss'],
 })
 export class RootTreePage implements OnInit {
-
   public nodelist = this.servtree.returnNodes();
+  public treeControl: NestedTreeControl<IRootNode> = new NestedTreeControl<IRootNode>(node => node.children);
+  public dataSource: ArrayDataSource<IRootNode> = new ArrayDataSource<IRootNode>(this.nodelist);
 
-  treeoptions = {
-    allowDrag: true,
-  };
-
-   treenodelist = [];
-
-  constructor(private servtree: TreeService) { }
+  constructor(private servtree: TreeService,) {
+  }
 
   ngOnInit() {
     this.nodelist = JSON.parse(localStorage.getItem('treeState')); //this.servtree.structureNodeTree(this.nodelist);
     //localStorage.setItem('treeState', JSON.stringify(this.nodelist));
+    console.log(this.dataSource);
+    console.log(this.treeControl.dataNodes);
   }
 
-  onUpdate(tree){
-    const duplicateList = [];
-    tree.treeModel.nodes.forEach(val => duplicateList.push(Object.assign({}, val)));
-    for(let i = 0; i < tree.treeModel.nodes.length; i++) {
-      try{
-        duplicateList[i].pos = i;
-        duplicateList[i].children = this.onMoveNodeChildren(duplicateList[i].children);
-      }
-      catch(e){
-      }
-    }
-    tree.treeModel.nodes = duplicateList;
-  }
-
-  onMoveNode(tree){
-    localStorage.setItem('treeState', JSON.stringify(tree.treeModel.nodes));
-    window.location.reload();
-  }
-
-
-  onMoveNodeChildren(childNode){
-    const duplicateList = [];
-    childNode.forEach(val => duplicateList.push(Object.assign({}, val)));
-    for(let i = 0; i < childNode.length; i++) {
-      try{
-        duplicateList[i].pos = i;
-        duplicateList[i].children = this.onMoveNodeChildren(duplicateList[i].children);
-      }
-      catch(e){
-      }
-
-  }
-
-  return duplicateList;
-}
 }

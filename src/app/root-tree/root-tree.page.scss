@@ -1,1 +1,20 @@
 @import '~@circlon/angular-tree-component/css/angular-tree-component.css';
+
+
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+.example-tree-node {
+  display: block;
+}
+
+.example-tree-node .example-tree-node {
+  padding-left: 40px;
+}

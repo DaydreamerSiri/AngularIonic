@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import nodes from '../../assets/json/nodes.json';
 import { ITreeModel } from '@circlon/angular-tree-component/lib/defs/api';
 import { TreeNode } from '@circlon/angular-tree-component';
+import { IRootNode } from './node';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TreeService{
-  public node: {id: number; name: string; children?: Array<any>}[] = nodes;
+  public node: IRootNode[] = nodes;
 
   constructor() {
    }
-
   returnNodes(){
     return [...this.node];
   }

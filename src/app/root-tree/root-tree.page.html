@@ -3,9 +3,16 @@
     <ion-title>Root Tree</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <ion-list>
-    <tree-root #tree (updateData)="onUpdate(tree)" (moveNode)="onMoveNode(tree)" [nodes]="nodelist"  [options]="treeoptions" ></tree-root>
-  </ion-list>
+  <cdk-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <cdk-nested-tree-node *cdkTreeNodeDef="let node" class="example-tree-node" cdkTreeNodeToggle>
+      <button mat-icon-button [attr.aria-label]="'Toggle ' + node.name" cdkTreeNodeToggle>
+          {{treeControl.isExpanded(node) ? '^' : '>'}}
+      </button>
+      {{node.name}}
+      <div [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+        <ng-container cdkTreeNodeOutlet></ng-container>
+      </div>
+    </cdk-nested-tree-node>
+  </cdk-tree>
 </ion-content>
