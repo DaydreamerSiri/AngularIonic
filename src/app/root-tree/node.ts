@@ -1,5 +1,5 @@
 export interface IRootNode {
-    id: number;
+    id: string;
     name: string;
     children?: IRootNode[];
 }
