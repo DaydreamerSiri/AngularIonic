@@ -11,19 +11,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { RootTreePageModule } from './root-tree/root-tree.module';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule,
+  imports: [
+    BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     Ng2SearchPipeModule,
     TreeModule,
     HttpClientModule,
     DragDropModule,
-    RootTreePageModule],
+    RootTreePageModule,
+    BrowserAnimationsModule,],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 

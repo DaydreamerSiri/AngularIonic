@@ -9,6 +9,9 @@ import { TreeModule } from '@circlon/angular-tree-component';
 import { IonicModule } from '@ionic/angular';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CdkTreeModule } from '@angular/cdk/tree';
+import {MatTreeModule } from '@angular/material/tree';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @NgModule({
   imports: [
@@ -19,6 +22,8 @@ import { CdkTreeModule } from '@angular/cdk/tree';
     IonicModule,
     DragDropModule,
     CdkTreeModule,
+    MatTreeModule,
+    MatIconModule,
   ],
   declarations: [RootTreePage]
 })

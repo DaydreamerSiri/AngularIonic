@@ -1,4 +1,9 @@
+@use '@angular/material' as mat;
+
+
 @import '~@circlon/angular-tree-component/css/angular-tree-component.css';
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
 
 
 .example-tree-invisible {
@@ -11,10 +16,20 @@
   margin-bottom: 0;
   list-style-type: none;
 }
-.example-tree-node {
-  display: block;
-}
 
-.example-tree-node .example-tree-node {
+/*
+ * This padding sets alignment of the nested nodes.
+ */
+.example-tree .mat-nested-tree-node div[role=group] {
   padding-left: 40px;
 }
+
+/*
+ * Padding for leaf nodes.
+ * Leaf nodes need to have padding so as to align with other non-leaf nodes
+ * under the same parent.
+ */
+.example-tree div[role=group] > .mat-tree-node {
+  padding-left: 40px;
+}
+
